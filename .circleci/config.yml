@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - run: apt-get update
-      - run: apt-get install -y openjdk-8-jdk maven docker
+      - run: apt-get install -y openjdk-8-jdk maven docker-engine
 
       - checkout
 
@@ -44,5 +44,5 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # build container
-      - run: docker daemon
+      - run: service docker start
       - run: mvn verify -Pbuild-container
