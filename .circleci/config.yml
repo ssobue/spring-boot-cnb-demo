@@ -44,4 +44,5 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # build container
+      - run: docker daemon
       - run: mvn verify -Pbuild-container
